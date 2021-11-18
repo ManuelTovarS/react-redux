@@ -1,0 +1,29 @@
+{
+  "productos": [
+    {
+      "nombre": "Cafe",
+      "precio": "15000",
+      "id": 1
+    },
+    {
+      "nombre": "Chorizo",
+      "precio": "400",
+      "id": 2
+    },
+    {
+      "nombre": "Cebolla",
+      "precio": 300,
+      "id": 3
+    },
+    {
+      "nombre": "Papa criolla",
+      "precio": 400,
+      "id": 4
+    },
+    {
+      "nombre": "Papa parda",
+      "precio": "600",
+      "id": 5
+    }
+  ]
+}
