@@ -2,7 +2,7 @@
   "productos": [
     {
       "nombre": "papa",
-      "precio": "15000",
+      "precio": "15",
       "id": 1
     },
     {
