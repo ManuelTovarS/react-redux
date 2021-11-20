@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 //Actions de Redux
 import { crearNuevoProductoAction } from '../actions/productoActions';
+import { mostrarAlertaAction, ocultarAlertaAction } from '../actions/alertaActions';
 
 const NuevoProducto = ({ navigation }) => {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ const NuevoProducto = ({ navigation }) => {
   //Acceder al state del store
   const cargando = useSelector((state) => state.productos.loading);
   const error = useSelector((state) => state.productos.error);
+  const alerta = useSelector((state) => state.alerta.alerta);
 
 
   //Mandar a llamar el action de productoAction mediante el useDispatch
@@ -32,11 +34,16 @@ const NuevoProducto = ({ navigation }) => {
 
     //Validar formulario
     if (nombre.trim() === '' || precio <= 0) {
+      const alerta = {
+        msg: 'Ambos campos son obligatorios',
+        classes: 'alert alert-danger text-center text-uppercase p3'
+      }
+      dispatch(mostrarAlertaAction(alerta));
       return;
     }
 
     //Si no hay errores
-
+    dispatch(ocultarAlertaAction());
     //Crear el nuevo producto
     agregarProducto({
       nombre,
@@ -56,6 +63,8 @@ const NuevoProducto = ({ navigation }) => {
               Agregar nuevo producto
             </h2>
 
+            {alerta ? <p className={alerta.classes}>{ alerta.msg}</p>: null }
+            
             <form onSubmit={submitNuevoProducto}>
               <div className="form-group">
                 <label>Nombre Producto</label>
